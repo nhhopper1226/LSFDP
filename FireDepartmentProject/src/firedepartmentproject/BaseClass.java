@@ -1,26 +1,27 @@
 //package firedepartmentproject;
 import javax.swing.JFrame;
-
-public class BaseClass
-{
+public class BaseClass extends JFrame{
+   
+   public class BaseClass
    {
+      {
+               
+               super("Fire Log Helper ");
+               
+               ImageIcon icon = new ImageIcon(BaseClass.class.getResource("lsfd logo.png"));
             
-            super("Fire Log Helper ");
             
-            ImageIcon icon = new ImageIcon(BaseClass.class.getResource("lsfd logo.png"));
-            
-            
-            JTabbedPane tabbedPane = new JTabbedPane();
+                JTabbedPane tabbedPane = new JTabbedPane();
            
-            JPanel panel1 = new JPanel();
+               JPanel panel1 = new JPanel();
           
-              JLabel label1 = new JLabel ("<html><center>Introduction<br>This program is for the Lee’s Summit Fire Department when wanting to edit, create, delete, or renew reports.<br>" +
+               JLabel label1 = new JLabel ("<html><center>Introduction<br>This program is for the Lee’s Summit Fire Department when wanting to edit, create, delete, or renew reports.<br>" +
 "The Search tab is used to search through existing reports, where you can view, edit or delete them.<br>" +
 "The Create tab is used to create new reports.<br>" +
 "The Alerts tab is used to make you aware of reports that are overdue for updating, with the number indicating how many reports are overdue.</html>", SwingConstants.RIGHT);
-           tabbedPane.addTab("Home", null, panel1, "Panel one");
+            tabbedPane.addTab("Home", null, panel1, "Panel one");
            
-           panel1.add(label1);
+            panel1.add(label1);
            
             JTabbedPane tabbedPane2 = new JTabbedPane();
             JLabel label2 = new JLabel("Search", SwingConstants.CENTER);
