@@ -1,15 +1,16 @@
-//package firedepartmentproject;
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class BaseClass extends JFrame{
    
-   public class BaseClass
+    private final JTextField textField;
+    
+   public BaseClass()
    {
-      {
-               
                super("Fire Log Helper ");
-               
-               ImageIcon icon = new ImageIcon(BaseClass.class.getResource("lsfd logo.png"));
-            
+               setLayout(new FlowLayout());
             
                 JTabbedPane tabbedPane = new JTabbedPane();
            
@@ -24,10 +25,19 @@ public class BaseClass extends JFrame{
             panel1.add(label1);
            
             JTabbedPane tabbedPane2 = new JTabbedPane();
-            JLabel label2 = new JLabel("Search", SwingConstants.CENTER);
+            JLabel label2 = new JLabel("Sort By..(Choose one)", SwingConstants.RIGHT);
             JPanel panel2 = new JPanel();
+            JRadioButton option1 = new JRadioButton("Business Name");
+            JRadioButton option2 = new JRadioButton("Date");
+            JRadioButton option3 = new JRadioButton("Address");
+            textField = new JTextField("Search Here", 50);
+            panel2.add(textField);
             panel2.add(label2);
+            panel2.add(option1);
+            panel2.add(option2);
+            panel2.add(option3);
             tabbedPane.addTab("Search", null, panel2, "Panel two");
+            
             
             JTabbedPane tabbedPane3 = new JTabbedPane();
             JLabel label3 = new JLabel("New Log", SwingConstants.CENTER);
@@ -41,14 +51,23 @@ public class BaseClass extends JFrame{
             panel4.add(label4);
             tabbedPane.addTab("Alerts", null, panel4, "Panel four");
             
-            
-            
-            
-            
             add(tabbedPane);
             
+            TextFieldHandler handler = new TextFieldHandler();
+            textField.addActionListener(handler);
             
-            }
+        }  
+            
 
+   private class TextFieldHandler implements ActionListener{
+           
+       @Override
+       public void actionPerformed(ActionEvent event){
+           String string = "";
+           
+           if (event.getSource() == textField)
+               string = String.format("textField: %s", event.getActionCommand());
+       }
+   }
     
 }
