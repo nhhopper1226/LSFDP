@@ -2,7 +2,8 @@ import javax.swing.JOptionPane;
 
 public class LoginCheck 
 {
-    public static void main(String[] args)
+    private final boolean logVal = false;
+    public boolean (boolean logVal)
     {
         int loop = 0;
         while (loop != 1)
@@ -16,6 +17,7 @@ public class LoginCheck
                 if (!password.equals("smokejumper"))
                     JOptionPane.showMessageDialog(null, "Password associated with \"FireChief\" is incorrect.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 else
+                    logVal = true;
                     loop = 1;
                 }
             }
@@ -35,5 +37,6 @@ public class LoginCheck
                 JOptionPane.showMessageDialog(null, "Not a valid username.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
+        return logVal;
     }
 }
