@@ -1,17 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package baseclass;
+
+/**
+ *
+ * @author tqyang0831
+ */
 import javax.swing.*;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class BaseClass extends JFrame{
    
     private final JTextField textField;
-    
+    private final JTextArea textArea;
    public BaseClass()
    {
-               super("Fire Log Helper ");
+               super("Fire Inspection Report System");
                setLayout(new FlowLayout());
-            
+               setLayout(new BorderLayout());
                 JTabbedPane tabbedPane = new JTabbedPane();
            
                JPanel panel1 = new JPanel();
@@ -25,17 +36,20 @@ public class BaseClass extends JFrame{
             panel1.add(label1);
            
             JTabbedPane tabbedPane2 = new JTabbedPane();
-            JLabel label2 = new JLabel("Sort By..(Choose one)", SwingConstants.RIGHT);
+            JLabel label2 = new JLabel("Sort By... (Choose one)", SwingConstants.RIGHT);
             JPanel panel2 = new JPanel();
             JRadioButton option1 = new JRadioButton("Business Name");
             JRadioButton option2 = new JRadioButton("Date");
             JRadioButton option3 = new JRadioButton("Address");
             textField = new JTextField("Search Here", 50);
+            String results = "Results will appear here.";
+            textArea = new JTextArea(results, 10, 40);
             panel2.add(textField);
             panel2.add(label2);
             panel2.add(option1);
             panel2.add(option2);
             panel2.add(option3);
+            panel2.add(new JScrollPane(textArea));
             tabbedPane.addTab("Search", null, panel2, "Panel two");
             
             
@@ -51,7 +65,7 @@ public class BaseClass extends JFrame{
             panel4.add(label4);
             tabbedPane.addTab("Alerts", null, panel4, "Panel four");
             
-            add(tabbedPane);
+            add(tabbedPane, BorderLayout.CENTER);
             
             TextFieldHandler handler = new TextFieldHandler();
             textField.addActionListener(handler);
