@@ -65,6 +65,11 @@ public class BaseClass extends JFrame{
     private final JTextField textField19;
     private final JTextField textField20;
     private final JTextField textField21;
+    private final JTextField textField44;
+    private final JTextField textField45;
+    private final JTextField textField46;
+    private final JTextField textField47;
+    private final JTextField textField48;  
     private final JLabel label1;
     private final JLabel label2;
     private final JLabel label3;
@@ -105,6 +110,11 @@ public class BaseClass extends JFrame{
     private final JLabel label38;
     private final JLabel label39;
     private final JLabel label40;
+    private final JLabel label44;
+    private final JLabel label45;
+    private final JLabel label46;
+    private final JLabel label47;
+    private final JLabel label48;  
     private final JCheckBox checkBox1;
     private final JCheckBox checkBox2;
     private final JCheckBox checkBox3;
@@ -257,7 +267,7 @@ public class BaseClass extends JFrame{
     private final JCheckBox checkBox150;
     private final JCheckBox checkBox151;
     private final JCheckBox checkBox152;
-    
+    private JButton button1;
     
     public CreateTab()
     {
@@ -609,6 +619,31 @@ public class BaseClass extends JFrame{
         add(label43);
         textField43 = new JTextField(15);
         add(textField43);   
+       
+       label44 = new JLabel("Date of last Service");
+        add(label44);
+        label45 = new JLabel("Riser Location");
+        add(label45);
+        label46 = new JLabel("Last service date");
+        add(label46);
+        label47 = new JLabel("Knox box Location");
+        add(label47);
+        label48 = new JLabel("FDC Location");
+        add(label48);
+        
+        textField44 = new JTextField(15);
+        add(textField44);
+        textField45 = new JTextField(15);
+        add(textField45);
+        textField46 = new JTextField(15);
+        add(textField46);
+        textField47 = new JTextField(15);
+        add(textField47);
+        textField48 = new JTextField(15);
+        add(textField48);
+       
+       button1 = new JButton("Submit");
+        add(button1);
        
         TextFieldHandler handler = new TextFieldHandler();
         textField1.addActionListener(handler);
