@@ -10,45 +10,18 @@ package baseclass;
  * @author tqyang0831
  */
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class BaseClass extends JFrame{
    
+    private final JList<String> resultJList;
+    private static final String[] businessNames = {};
+    private final JList<String> overdueJList;
+    private static final String[] overdueInspections = {};
     private final JTextField textField;
-    private final JTextArea textArea, textArea1;
-    private JButton SubB;
-   public BaseClass()
-   {
-            super("Fire Inspection Report System");
-            JTabbedPane tabbedPane = new JTabbedPane();
-           
-            JPanel panel1 = new JPanel();
-          
-            JLabel label1 = new JLabel ("<html><center><font size = +4>LSFD Inspection Report System</center></font><br></html>");
-            JLabel label6 = new JLabel ("<html>This program is for the Lee’s Summit Fire Department when wanting to edit, create, delete, or renew reports.<br>" +
-            "The Search tab is used to search through existing reports, where you can view, edit or delete them.<br>" +
-            "The Create tab is used to create new reports.<br>" +
-            "The Alerts tab is used to make you aware of reports that are overdue for updating, with the number indicating how many reports are overdue.</html>");
-            tabbedPane.addTab("Home", null, panel1, "Panel one");
-            panel1.add(label1);
-            panel1.add(label6);
-            
-            JPanel panel2 = new JPanel();
-            JLabel label2 = new JLabel ("Search for the business name:");
-            textField = new JTextField(80);
-            textArea = new JTextArea(10, 80);
-            SubB = new JButton("Search");
-            JLabel label5 = new JLabel ("Search Results (Click Result to View Reports)");
-            panel2.add(label2);
-            panel2.add(textField);
-            panel2.add(SubB);
-            panel2.add(label5);
-            panel2.add(new JScrollPane(textArea));
-            tabbedPane.addTab("Search", null, panel2);
-            
-            private final JTextField textField1;
+    private final JButton SubB;
+    private final JTextField textField1;
     private final JTextField textField2;
     private final JTextField textField3;
     private final JTextField textField5;
@@ -65,11 +38,9 @@ public class BaseClass extends JFrame{
     private final JTextField textField19;
     private final JTextField textField20;
     private final JTextField textField21;
-    private final JTextField textField44;
-    private final JTextField textField45;
-    private final JTextField textField46;
-    private final JTextField textField47;
-    private final JTextField textField48;  
+    private final JTextField textField22;
+    private final JTextField textField23;
+    private final JTextField textField24;
     private final JLabel label1;
     private final JLabel label2;
     private final JLabel label3;
@@ -91,7 +62,6 @@ public class BaseClass extends JFrame{
     private final JLabel label19;
     private final JLabel label20;
     private final JLabel label21;
-    private final JLabel label22;
     private final JLabel label23;
     private final JLabel label24;
     private final JLabel label25;
@@ -110,11 +80,6 @@ public class BaseClass extends JFrame{
     private final JLabel label38;
     private final JLabel label39;
     private final JLabel label40;
-    private final JLabel label44;
-    private final JLabel label45;
-    private final JLabel label46;
-    private final JLabel label47;
-    private final JLabel label48;  
     private final JCheckBox checkBox1;
     private final JCheckBox checkBox2;
     private final JCheckBox checkBox3;
@@ -267,245 +232,283 @@ public class BaseClass extends JFrame{
     private final JCheckBox checkBox150;
     private final JCheckBox checkBox151;
     private final JCheckBox checkBox152;
-    private JButton button1;
+    private final JCheckBox checkBox153;
+   public BaseClass()
+   {
+            super("Fire Inspection Report System");
+            JTabbedPane tabbedPane = new JTabbedPane();
+            TextFieldHandler handler = new TextFieldHandler();
+            JPanel panel1 = new JPanel();
+          
+            JLabel label141 = new JLabel ("<html><center><font size = +4>LSFD Inspection Report System</center></font><br></html>");
+            JLabel label142 = new JLabel ("<html>This program is for the Lee’s Summit Fire Department when wanting to edit, create, delete, or renew reports.<br>" +
+            "The Search tab is used to search through existing reports, where you can view, edit or delete them.<br>" +
+            "The Create tab is used to create new reports.<br>" +
+            "The Alerts tab is used to make you aware of reports that are overdue for updating, with the number indicating how many reports are overdue.</html>");
+            tabbedPane.addTab("Home", null, panel1, "Panel one");
+            panel1.add(label141);
+            panel1.add(label142);
+            
+            JPanel panel2 = new JPanel();
+            JLabel label143 = new JLabel ("Search for the business name:");
+            textField = new JTextField(80);
+            SubB = new JButton("Search");
+            resultJList = new JList<String> (businessNames);
+            resultJList.setVisibleRowCount(2);
+            resultJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            JLabel results = new JLabel("                                                                                                                 Results                                                                                                                ");
+            panel2.add(label143);
+            panel2.add(textField);
+            panel2.add(SubB);
+            panel2.add(results);
+            panel2.add (new JScrollPane(resultJList));
+            tabbedPane.addTab("Search", null, panel2);
     
-    public CreateTab()
-    {
-        super("Create");
-        setLayout(new FlowLayout());
-       /* layout = new GridBagLayout();
-        setLayout(layout);
-        constraints = new GridBagConstraints();*/
         
+        JPanel panel3 = new JPanel();
         label1 = new JLabel();
         label1.setText("Business Name:");
-        add(label1);
+        panel3.add(label1);
        
-        textField1 = new JTextField(44);
-        add(textField1);
-        
+        textField1 = new JTextField(25);
+        panel3.add(textField1);
         
         label2 = new JLabel("Phone:");
-        add(label2);
+        panel3.add(label2);
         
-        textField2 = new JTextField(74);
-        add(textField2);
+        textField2 = new JTextField(21);
+        panel3.add(textField2);
         
         label3 = new JLabel("Address:");
-        add(label3);
+        panel3.add(label3);
         
-        textField3 = new JTextField(30);
-        add(textField3);
+        textField3 = new JTextField(21);
+        panel3.add(textField3);
         
-        label4 = new JLabel("Emergency Contact Information");
-        add(label4);
+        checkBox153 = new JCheckBox();
+        panel3.add(checkBox153);
+        
+        label4 = new JLabel("Changes");
+        panel3.add(label4);
+        
+        textField22 = new JTextField("Emergency Contact Information",79);
+        textField22.setHorizontalAlignment(JTextField.CENTER);
+        textField22.setEditable(false);
+        panel3.add(textField22);
         
         label5 = new JLabel("Name:");
-        add(label5);
+        panel3.add(label5);
         
         textField5 = new JTextField(35);
-        add(textField5);
-        
+        panel3.add(textField5);
+            
         label6 = new JLabel("Contact Type:");
-        add(label6);
+        panel3.add(label6);
         
-        textField6 = new JTextField(35);
-        add(textField6);
+        textField6 = new JTextField(37);
+        panel3.add(textField6);
         
         label7 = new JLabel("Number:");
-        add(label7);
+        panel3.add(label7);
         
-        textField7 = new JTextField(35);
-        add(textField7);
+        textField7 = new JTextField(40);
+        panel3.add(textField7);
         
         label8 = new JLabel("Type of Phone:");
-        add(label8);
+        panel3.add(label8);
         
-        textField8 = new JTextField(15);
-        add(textField8);
+        textField8 = new JTextField(25);
+        panel3.add(textField8);
         
         label9 = new JLabel("Occupancy Class:");
-        add(label9);
+        panel3.add(label9);
         
-        textField9 = new JTextField(15);
-        add(textField9);
+        textField9 = new JTextField(20);
+        panel3.add(textField9);
         
         label10 = new JLabel("Hazard Classification:");
-        add(label10);
+        panel3.add(label10);
         
-        textField10 = new JTextField(15);
-        add(textField10);
+        textField10 = new JTextField(20);
+        panel3.add(textField10);
         
         label11 = new JLabel("District:");
-        add(label11);
+        panel3.add(label11);
         
-        textField11 = new JTextField(15);
-        add(textField11);
+        textField11 = new JTextField(20);
+        panel3.add(textField11);
         
         label12 = new JLabel("PFA#:");
-        add(label12);
+        panel3.add(label12);
         
-        textField12 = new JTextField(15);
-        add(textField12);
+        textField12 = new JTextField(20);
+        panel3.add(textField12);
         
         label13 = new JLabel("Fire Alarm Panel:");
-        add(label13);
+        panel3.add(label13);
         
-        textField13 = new JTextField(15);
-        add(textField13);
+        textField13 = new JTextField(20);
+        panel3.add(textField13);
         
         label14 = new JLabel("Active:");
-        add(label14);
+        panel3.add(label14);
         
         checkBox1 = new JCheckBox("P");
         checkBox2 = new JCheckBox("F");
         checkBox3 = new JCheckBox("NA");
-        add(checkBox1);
-        add(checkBox2);
-        add(checkBox3);
+        panel3.add(checkBox1);
+        panel3.add(checkBox2);
+        panel3.add(checkBox3);
         
         label15 = new JLabel("Sys Normal:");
-        add(label15);
+        panel3.add(label15);
         
         checkBox4 = new JCheckBox("P");
         checkBox5 = new JCheckBox("F");
         checkBox6 = new JCheckBox("NA");
-        add(checkBox4);
-        add(checkBox5);
-        add(checkBox6);
+        panel3.add(checkBox4);
+        panel3.add(checkBox5);
+        panel3.add(checkBox6);
         
         label16 = new JLabel("Panel/Pad Location:");
-        add(label16);
+        panel3.add(label16);
         
-        textField16 = new JTextField(15);
-        add(textField16);
+        textField16 = new JTextField(70);
+        panel3.add(textField16);
         
         checkBox7 = new JCheckBox("No Violations Noted");
-        add(checkBox7);
+        panel3.add(checkBox7);
         
-        label17 = new JLabel("Inspection Narrative");
-        add(label17);
+        textField23 = new JTextField("Inspection Narrative",60);
+        textField23.setHorizontalAlignment(JTextField.CENTER);
+        textField23.setEditable(false);
+        panel3.add(textField23);
         
         checkBox8 = new JCheckBox("All Violations Noted");
-        add(checkBox8);
+        panel3.add(checkBox8);
         
         label18 = new JLabel("1st Inspection:");
-        add(label18);
+        panel3.add(label18);
         
-        textField18 = new JTextField(15);
-        add(textField18);
+        textField18 = new JTextField(12);
+        panel3.add(textField18);
         
         label19 = new JLabel("2nd Inspection:");
-        add(label19);
+        panel3.add(label19);
         
-        textField19 = new JTextField(15);
-        add(textField19);
+        textField19 = new JTextField(12);
+        panel3.add(textField19);
         
         label20 = new JLabel("3rd Inspection:");
-        add(label20);
+        panel3.add(label20);
         
-        textField20 = new JTextField(15);
-        add(textField20);
+        textField20 = new JTextField(12);
+        panel3.add(textField20);
         
         label21 = new JLabel("4th Inpection:");
-        add(label21);
+        panel3.add(label21);
         
-        textField21 = new JTextField(15);
-        add(textField21);
+        textField21 = new JTextField(12);
+        panel3.add(textField21);
         
-        label22 = new JLabel("Exit Door/Exit Ways");
-        add(label22);
+        textField24 = new JTextField("Exit Door/Exit Ways");
+        
+        panel3.add(textField24);
+        
+        label17 = new JLabel("Obstructions:");
+        panel3.add(label17);
+        
         checkBox9 = new JCheckBox("P");
-        checkBox10 = new JCheckBox("P");
-        checkBox11 = new JCheckBox("Obstruction");
-        add(checkBox9);
-        add(checkBox10);
-        add(checkBox11);
+        checkBox10 = new JCheckBox("F");
+        checkBox11 = new JCheckBox("NA");
+        panel3.add(checkBox9);
+        panel3.add(checkBox10);
+        panel3.add(checkBox11);
         
         label23 = new JLabel("Exit sign/Emer. Lights");
-        add(label23);
+        panel3.add(label23);
         
         label24 = new JLabel("Fire Doors");
-        add(label24);
+        panel3.add(label24);
         
         label25 = new JLabel("Fire Extinguishers");
-        add(label25);
+        panel3.add(label25);
         
         label26 = new JLabel("Electrical");
-        add(label26);
+        panel3.add(label26);
         
         label27 = new JLabel("Storage");
-        add(label27);
+        panel3.add(label27);
         
         label28 = new JLabel("Flammable/Comb.");
-        add(label28);
+        panel3.add(label28);
         
         label29 = new JLabel("Compressed Gases");
-        add(label29);
+        panel3.add(label29);
         
         label30 = new JLabel("Spray Finishing Oper.");
-        add(label30);
+        panel3.add(label30);
         
         label31 = new JLabel("Sprinkler/Standpipe");
-        add(label31);
+        panel3.add(label31);
         
         label32 = new JLabel("Hood Ext. System");
-        add(label32);
+        panel3.add(label32);
         
         label33 = new JLabel("Occupant Load");
-        add(label33);
+        panel3.add(label33);
         
         label34 = new JLabel("Address");
-        add(label34);
+        panel3.add(label34);
         
         label35 = new JLabel("Fire Dpt. Access");
-        add(label35);
+        panel3.add(label35);
         
         label36 = new JLabel("Fire Dept. Connection");
-        add(label36);
+        panel3.add(label36);
         
         label37 = new JLabel("Elevator");
-        add(label37);
+        panel3.add(label37);
         
         label38 = new JLabel("Propane");
-        add(label38);
+        panel3.add(label38);
         
         label39 = new JLabel("Other");
-        add(label39);
+        panel3.add(label39);
         
         label40 = new JLabel("Additional Violations/Comments:");
-        add(label40);
+        panel3.add(label40);
         
         
-        checkBox12 = new JCheckBox();
-        checkBox13 = new JCheckBox();
-        checkBox14 = new JCheckBox("Locks/Panic");
-        checkBox15 = new JCheckBox();
-        checkBox16 = new JCheckBox();
-        checkBox17 = new JCheckBox("Locks/Panic Hardware");
-        checkBox18 = new JCheckBox();
-        checkBox19 = new JCheckBox();
-        checkBox20 = new JCheckBox("Exit Signs Illuminated");
-        checkBox21 = new JCheckBox();
-        checkBox22 = new JCheckBox();
-        checkBox23 = new JCheckBox("Emer. Lights Working");
-        checkBox24 = new JCheckBox();
-        checkBox25 = new JCheckBox();
-        checkBox26 = new JCheckBox("Maintained/Close Fully");
-        checkBox27 = new JCheckBox();
-        checkBox28 = new JCheckBox();
-        checkBox29 = new JCheckBox("Unapproved Open Devices");
-        checkBox30 = new JCheckBox();
-        checkBox31 = new JCheckBox();
-        checkBox32 = new JCheckBox("Clear of Obstructions");
-        checkBox33 = new JCheckBox();
-        checkBox34 = new JCheckBox();
-        checkBox35 = new JCheckBox("Minimum 2A10BC");
-        checkBox36 = new JCheckBox();
-        checkBox37 = new JCheckBox();
-        checkBox38 = new JCheckBox("Max of 75 travel dist.");
-        checkBox39 = new JCheckBox();
-        checkBox40 = new JCheckBox();
+    checkBox12 = new JCheckBox();
+    checkBox13 = new JCheckBox();
+    checkBox14 = new JCheckBox("Locks/Panic");
+    checkBox15 = new JCheckBox();
+    checkBox16 = new JCheckBox();
+    checkBox17 = new JCheckBox("Locks/Panic Hardware");
+    checkBox18 = new JCheckBox();
+    checkBox19 = new JCheckBox();
+    checkBox20 = new JCheckBox("Exit Signs Illuminated");
+    checkBox21 = new JCheckBox();
+    checkBox22 = new JCheckBox();
+    checkBox23 = new JCheckBox("Emer. Lights Working");
+    checkBox24 = new JCheckBox();
+    checkBox25 = new JCheckBox();
+    checkBox26 = new JCheckBox("Maintained/Close Fully");
+    checkBox27 = new JCheckBox();
+    checkBox28 = new JCheckBox();
+    checkBox29 = new JCheckBox("Unapproved Open Devices");
+    checkBox30 = new JCheckBox();
+    checkBox31 = new JCheckBox();
+    checkBox32 = new JCheckBox("Clear of Obstructions");
+    checkBox33 = new JCheckBox();
+    checkBox34 = new JCheckBox();
+    checkBox35 = new JCheckBox("Minimum 2A10BC");
+    checkBox36 = new JCheckBox();
+    checkBox37 = new JCheckBox();
+    checkBox38 = new JCheckBox("Max of 75 travel dist.");
+    checkBox39 = new JCheckBox();
+    checkBox40 = new JCheckBox();
     checkBox41 = new JCheckBox("Annual Inspection");
     checkBox42 = new JCheckBox();
     checkBox43 = new JCheckBox();
@@ -552,123 +555,92 @@ public class BaseClass extends JFrame{
     checkBox84 = new JCheckBox();
     checkBox85 = new JCheckBox();
     checkBox86 = new JCheckBox("Secured");
-    checkBox33 = new JCheckBox();
-       checkBox87 = new JCheckBox();
-        checkBox88 = new JCheckBox();
-        checkBox89 = new JCheckBox("Minimum 4A40BC fire extinguisher within 30ft.");
-        checkBox90 = new JCheckBox();
-        checkBox91 = new JCheckBox();
-        checkBox92 = new JCheckBox("Approved Spary booth");
-        checkBox93 = new JCheckBox();
-        checkBox94 = new JCheckBox();
-        checkBox95 = new JCheckBox("Auto extinguishing System inspected Annually");
-        checkBox96 = new JCheckBox();
-        checkBox97 = new JCheckBox();
-        checkBox98 = new JCheckBox("Welding/hotwork warning signs and No Smoking signs");
-        checkBox99 = new JCheckBox();
-        checkBox100 = new JCheckBox();
-        checkBox101 = new JCheckBox("Annual Service");
-        checkBox102 = new JCheckBox();
-        checkBox103 = new JCheckBox();
-        checkBox104 = new JCheckBox("Access");
-        checkBox105 = new JCheckBox();
-        checkBox106 = new JCheckBox();
-        checkBox107 = new JCheckBox("Standpipe sticker on door");
-        checkBox108 = new JCheckBox();
-        checkBox109 = new JCheckBox();
-        checkBox110 = new JCheckBox("Sprinkler room identified");
-    checkBox122 = new JCheckBox();
-    checkBox123 = new JCheckBox();
-    checkBox124 = new JCheckBox("FDC caps in place");
-    checkBox125 = new JCheckBox();
-    checkBox126 = new JCheckBox();
-    checkBox127 = new JCheckBox("FDC Identified");
-    checkBox128 = new JCheckBox();
-    checkBox129 = new JCheckBox();
-    checkBox130 = new JCheckBox("FDC access is unobstructed");
-    checkBox131 = new JCheckBox();
-    checkBox132 = new JCheckBox();
-    checkBox133 = new JCheckBox("Override Keys On-Site");
-    checkBox134 = new JCheckBox();
-    checkBox135 = new JCheckBox();
-    checkBox136 = new JCheckBox("704 Placards");
-    checkBox137 = new JCheckBox();
-    checkBox138 = new JCheckBox();
-    checkBox139 = new JCheckBox("Permit On-Site");
-    checkBox140 = new JCheckBox();
-    checkBox141 = new JCheckBox();
-    checkBox142 = new JCheckBox("Impact bollards");
-    checkBox145 = new JCheckBox("Other Violations Noted- Use box below to describe");
-       
-    label40 = new JLabel("Additional Violations/Comments:");
-        add(label40);
-        textField40 = new JTextField(100);
-        add(textField40);
-        
-        label41 = new JLabel("Date of Report:");
-        add(label41);
-        textField41 = new JTextField(15);
-        add(textField41);
-        
-        label42 = new JLabel("Inspector:");
-        add(label42);
-        textField42 = new JTextField(15);
-        add(textField42);
-        
-        label43 = new JLabel("Reponsible Signature:");
-        add(label43);
-        textField43 = new JTextField(15);
-        add(textField43);   
-       
-       label44 = new JLabel("Date of last Service");
-        add(label44);
-        label45 = new JLabel("Riser Location");
-        add(label45);
-        label46 = new JLabel("Last service date");
-        add(label46);
-        label47 = new JLabel("Knox box Location");
-        add(label47);
-        label48 = new JLabel("FDC Location");
-        add(label48);
-        
-        textField44 = new JTextField(15);
-        add(textField44);
-        textField45 = new JTextField(15);
-        add(textField45);
-        textField46 = new JTextField(15);
-        add(textField46);
-        textField47 = new JTextField(15);
-        add(textField47);
-        textField48 = new JTextField(15);
-        add(textField48);
-       
-       button1 = new JButton("Submit");
-        add(button1);
-       
-        TextFieldHandler handler = new TextFieldHandler();
-        textField1.addActionListener(handler);
-        textField2.addActionListener(handler);
-        textField3.addActionListener(handler);
-            JLabel label3 = new JLabel("New Log");
-            JPanel panel3 = new JPanel();
-            panel3.add(label3);
+    checkBox87 = new JCheckBox("P");
+    checkBox88 = new JCheckBox("P");
+    checkBox89 = new JCheckBox("P");
+    checkBox90 = new JCheckBox("P");
+    checkBox91 = new JCheckBox("P");
+    checkBox92 = new JCheckBox("P");
+    checkBox93 = new JCheckBox("P");
+    checkBox94 = new JCheckBox("P");
+    checkBox95 = new JCheckBox("P");
+    checkBox96 = new JCheckBox("P");
+    checkBox97 = new JCheckBox("P");
+    checkBox98 = new JCheckBox("P");
+    checkBox99 = new JCheckBox("P");
+    checkBox100 = new JCheckBox("P");
+    checkBox101 = new JCheckBox("P");
+    checkBox102 = new JCheckBox("P");
+    checkBox103 = new JCheckBox("P");
+    checkBox104 = new JCheckBox("P");
+    checkBox105 = new JCheckBox("P");
+    checkBox106 = new JCheckBox("P");
+    checkBox107 = new JCheckBox("P");
+    checkBox108 = new JCheckBox("P");
+    checkBox109 = new JCheckBox("P");
+    checkBox110 = new JCheckBox("P");
+    checkBox111 = new JCheckBox("P");
+    checkBox112 = new JCheckBox("P");
+    checkBox113 = new JCheckBox("P");
+    checkBox114 = new JCheckBox("P");
+    checkBox115 = new JCheckBox("P");
+    checkBox116 = new JCheckBox("P");
+    checkBox117 = new JCheckBox("P");
+    checkBox118 = new JCheckBox("P");
+    checkBox119 = new JCheckBox("P");
+    checkBox120 = new JCheckBox("P");
+    checkBox121 = new JCheckBox("P");
+    checkBox122 = new JCheckBox("P");
+    checkBox123 = new JCheckBox("P");
+    checkBox124 = new JCheckBox("P");
+    checkBox125 = new JCheckBox("P");
+    checkBox126 = new JCheckBox("P");
+    checkBox127 = new JCheckBox("P");
+    checkBox128 = new JCheckBox("P");
+    checkBox129 = new JCheckBox("P");
+    checkBox130 = new JCheckBox("P");
+    checkBox131 = new JCheckBox("P");
+    checkBox132 = new JCheckBox("P");
+    checkBox133 = new JCheckBox("P");
+    checkBox134 = new JCheckBox("P");
+    checkBox135 = new JCheckBox("P");
+    checkBox136 = new JCheckBox("P");
+    checkBox137 = new JCheckBox("P");
+    checkBox138 = new JCheckBox("P");
+    checkBox139 = new JCheckBox("P");
+    checkBox140 = new JCheckBox("P");
+    checkBox141 = new JCheckBox("P");
+    checkBox142 = new JCheckBox("P");
+    checkBox143 = new JCheckBox("P");
+    checkBox144 = new JCheckBox("P");
+    checkBox145 = new JCheckBox("P");
+    checkBox146 = new JCheckBox("P");
+    checkBox147 = new JCheckBox("P");
+    checkBox148 = new JCheckBox("P");
+    checkBox149 = new JCheckBox("P");
+    checkBox150 = new JCheckBox("P");
+    checkBox151 = new JCheckBox("P");
+    checkBox152 = new JCheckBox("P");
+    textField1.addActionListener(handler);
+    textField2.addActionListener(handler);
+    textField3.addActionListener(handler);
             tabbedPane.addTab("Create", null, panel3, "Panel three");
 
-            JLabel label4 = new JLabel("Overdue: (Sorted by least recent)", SwingConstants.LEFT);
+            JLabel label80 = new JLabel("                                                                                                     Overdue: (Sorted by least recent)                                                                                                      ");
+            overdueJList = new JList<String> (overdueInspections);
+            overdueJList.setVisibleRowCount(2);
+            overdueJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             JPanel panel4 = new JPanel();
-            textArea1 = new JTextArea(20, 80);
-            panel4.add(label4);
-            panel4.add(new JScrollPane(textArea1));
+            panel4.add(label80);
+            panel4.add (new JScrollPane(overdueJList));
             tabbedPane.addTab("Alerts(1)", null , panel4, "Panel four");
             
             add(tabbedPane);
             
-            TextFieldHandler handler = new TextFieldHandler();
             textField.addActionListener(handler);
             
    }
-            
-
+   
    private class TextFieldHandler implements ActionListener{
            
        @Override
@@ -679,15 +651,5 @@ public class BaseClass extends JFrame{
                string = String.format("textField: %s", event.getActionCommand());
        }
    }
-        protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = BaseClass.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
-    }
-   
    
 }
