@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package firedepartmentproject;
+
+import javax.persistence.*;
+public class Alerts {
+    public void alerts()
+    {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("FireDepartmentProjectPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TypedQuery<Inspections> findOverdueReports = entityManager.createQuery("SELECT * FROM inspections i WHERE (DATEDIFF(NOW(), i.inspectionDate) > 365);", Inspections.class).setParameter("idInspections", this);
+        findOverdueReports.getResultList().stream().forEach((inspectionID) ->
+        {
+            System.out.printf("-12d%-13s%s%n", inspectionID.getIdInspections());
+        }
+        );
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
