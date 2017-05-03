@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package baseclass;
+package firedepartmentproject;
 
-/**
- *
- * @author tqyang0831
- */
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+import java.util.*;
 public class BaseClass extends JFrame{
-   
+  
+    ArrayList<String> list = new ArrayList<>();
     private final JList<String> resultJList;
     private static final String[] businessNames = {};
-    private final JList<String> overdueJList;
-    private static final String[] overdueInspections = {};
+    private final JTextField tf1;
+    private final JTextField tf2;
+    private final JTextField tf3;
     private final JTextField textField;
     private final JButton SubB;
     private final JTextField textField1;
@@ -256,7 +249,7 @@ public class BaseClass extends JFrame{
             resultJList = new JList<String> (businessNames);
             resultJList.setVisibleRowCount(2);
             resultJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            JLabel results = new JLabel("                                                                                                                 Results                                                                                                                ");
+            JLabel results = new JLabel("Results");
             panel2.add(label143);
             panel2.add(textField);
             panel2.add(SubB);
@@ -624,16 +617,22 @@ public class BaseClass extends JFrame{
     textField1.addActionListener(handler);
     textField2.addActionListener(handler);
     textField3.addActionListener(handler);
-            tabbedPane.addTab("Create", null, panel3, "Panel three");
-
-            JLabel label80 = new JLabel("                                                                                                     Overdue: (Sorted by least recent)                                                                                                      ");
-            overdueJList = new JList<String> (overdueInspections);
-            overdueJList.setVisibleRowCount(2);
-            overdueJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            JPanel panel4 = new JPanel();
-            panel4.add(label80);
-            panel4.add (new JScrollPane(overdueJList));
-            tabbedPane.addTab("Alerts(1)", null , panel4, "Panel four");
+    tabbedPane.addTab("Create", null, panel3, "Panel three");
+                    
+            
+            
+            
+        tf1 = new JTextField();    
+        JLabel label80 = new JLabel("Overdue: (Sorted by least recent)"); 
+        Alerts obj = new Alerts();
+        //obj.alerts();
+            
+        JPanel panel4 = new JPanel();
+        panel4.add(label80);    
+        tabbedPane.addTab("Alerts(1)", null , panel4, "Panel four");
+     
+        
+        
             
             add(tabbedPane);
             
