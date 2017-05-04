@@ -4,9 +4,18 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.*;
+import javax.persistence.*;
+
 public class BaseClass extends JFrame{
-  
-    ArrayList<String> list = new ArrayList<>();
+    private List<Inspections> list;
+    private List<Business> list2ElectricBoogaloo;
+    private final EntityManagerFactory eMFactory = Persistence.createEntityManagerFactory("FireDepartmentProjectPU");
+    private final EntityManager eM = eMFactory.createEntityManager();
+    private final JButton button;
+  //  ArrayList<String> list = new ArrayList<>();
+    private int numberOfEntries = 0;
+    private int currentEntryIndex;
+    private int currentEntryIndex2;
     private final JList<String> resultJList;
     private static final String[] businessNames = {};
     private final JTextField tf1;
@@ -226,6 +235,7 @@ public class BaseClass extends JFrame{
     private final JCheckBox checkBox151;
     private final JCheckBox checkBox152;
     private final JCheckBox checkBox153;
+    
    public BaseClass()
    {
             super("Fire Inspection Report System");
@@ -246,7 +256,7 @@ public class BaseClass extends JFrame{
             JLabel label143 = new JLabel ("Search for the business name:");
             textField = new JTextField(80);
             SubB = new JButton("Search");
-            resultJList = new JList<String> (businessNames);
+            resultJList = new JList<> (businessNames);
             resultJList.setVisibleRowCount(2);
             resultJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             JLabel results = new JLabel("Results");
@@ -473,162 +483,169 @@ public class BaseClass extends JFrame{
         panel3.add(label40);
         
         
-    checkBox12 = new JCheckBox();
-    checkBox13 = new JCheckBox();
-    checkBox14 = new JCheckBox("Locks/Panic");
-    checkBox15 = new JCheckBox();
-    checkBox16 = new JCheckBox();
-    checkBox17 = new JCheckBox("Locks/Panic Hardware");
-    checkBox18 = new JCheckBox();
-    checkBox19 = new JCheckBox();
-    checkBox20 = new JCheckBox("Exit Signs Illuminated");
-    checkBox21 = new JCheckBox();
-    checkBox22 = new JCheckBox();
-    checkBox23 = new JCheckBox("Emer. Lights Working");
-    checkBox24 = new JCheckBox();
-    checkBox25 = new JCheckBox();
-    checkBox26 = new JCheckBox("Maintained/Close Fully");
-    checkBox27 = new JCheckBox();
-    checkBox28 = new JCheckBox();
-    checkBox29 = new JCheckBox("Unapproved Open Devices");
-    checkBox30 = new JCheckBox();
-    checkBox31 = new JCheckBox();
-    checkBox32 = new JCheckBox("Clear of Obstructions");
-    checkBox33 = new JCheckBox();
-    checkBox34 = new JCheckBox();
-    checkBox35 = new JCheckBox("Minimum 2A10BC");
-    checkBox36 = new JCheckBox();
-    checkBox37 = new JCheckBox();
-    checkBox38 = new JCheckBox("Max of 75 travel dist.");
-    checkBox39 = new JCheckBox();
-    checkBox40 = new JCheckBox();
-    checkBox41 = new JCheckBox("Annual Inspection");
-    checkBox42 = new JCheckBox();
-    checkBox43 = new JCheckBox();
-    checkBox44 = new JCheckBox("Access");
-    checkBox45 = new JCheckBox();
-    checkBox46 = new JCheckBox();
-    checkBox47 = new JCheckBox("Extension Cords");
-    checkBox48 = new JCheckBox();
-    checkBox49 = new JCheckBox();
-    checkBox50 = new JCheckBox("Multi Plug Adapters");
-    checkBox51 = new JCheckBox();
-    checkBox52 = new JCheckBox();
-    checkBox53 = new JCheckBox("Open Boxes, Switches");
-    checkBox54 = new JCheckBox();
-    checkBox55 = new JCheckBox();
-    checkBox56 = new JCheckBox("Opening in Electircal Panel");
-    checkBox57 = new JCheckBox();
-    checkBox58 = new JCheckBox();
-    checkBox59 = new JCheckBox("36in. clearance from storage");
-    checkBox60 = new JCheckBox();
-    checkBox61 = new JCheckBox();
-    checkBox62 = new JCheckBox("Housekeeping");
-    checkBox63 = new JCheckBox();
-    checkBox64 = new JCheckBox();
-    checkBox65 = new JCheckBox("24in. below ceiling");
-    checkBox66 = new JCheckBox();
-    checkBox67 = new JCheckBox();
-    checkBox68 = new JCheckBox("18in. below sprinklers");
-    checkBox69 = new JCheckBox();
-    checkBox70 = new JCheckBox();
-    checkBox71 = new JCheckBox("under Stairs");
-    checkBox72 = new JCheckBox();
-    checkBox73 = new JCheckBox();
-    checkBox74 = new JCheckBox("Close to ignition source");
-    checkBox75 = new JCheckBox();
-    checkBox76 = new JCheckBox();
-    checkBox77 = new JCheckBox("704 Placard");
-    checkBox78 = new JCheckBox();
-    checkBox79 = new JCheckBox();
-    checkBox80 = new JCheckBox("MSDS on premises");
-    checkBox81 = new JCheckBox();
-    checkBox82 = new JCheckBox();
-    checkBox83 = new JCheckBox("Non-smoking signs");
-    checkBox84 = new JCheckBox();
-    checkBox85 = new JCheckBox();
-    checkBox86 = new JCheckBox("Secured");
-    checkBox87 = new JCheckBox("P");
-    checkBox88 = new JCheckBox("P");
-    checkBox89 = new JCheckBox("P");
-    checkBox90 = new JCheckBox("P");
-    checkBox91 = new JCheckBox("P");
-    checkBox92 = new JCheckBox("P");
-    checkBox93 = new JCheckBox("P");
-    checkBox94 = new JCheckBox("P");
-    checkBox95 = new JCheckBox("P");
-    checkBox96 = new JCheckBox("P");
-    checkBox97 = new JCheckBox("P");
-    checkBox98 = new JCheckBox("P");
-    checkBox99 = new JCheckBox("P");
-    checkBox100 = new JCheckBox("P");
-    checkBox101 = new JCheckBox("P");
-    checkBox102 = new JCheckBox("P");
-    checkBox103 = new JCheckBox("P");
-    checkBox104 = new JCheckBox("P");
-    checkBox105 = new JCheckBox("P");
-    checkBox106 = new JCheckBox("P");
-    checkBox107 = new JCheckBox("P");
-    checkBox108 = new JCheckBox("P");
-    checkBox109 = new JCheckBox("P");
-    checkBox110 = new JCheckBox("P");
-    checkBox111 = new JCheckBox("P");
-    checkBox112 = new JCheckBox("P");
-    checkBox113 = new JCheckBox("P");
-    checkBox114 = new JCheckBox("P");
-    checkBox115 = new JCheckBox("P");
-    checkBox116 = new JCheckBox("P");
-    checkBox117 = new JCheckBox("P");
-    checkBox118 = new JCheckBox("P");
-    checkBox119 = new JCheckBox("P");
-    checkBox120 = new JCheckBox("P");
-    checkBox121 = new JCheckBox("P");
-    checkBox122 = new JCheckBox("P");
-    checkBox123 = new JCheckBox("P");
-    checkBox124 = new JCheckBox("P");
-    checkBox125 = new JCheckBox("P");
-    checkBox126 = new JCheckBox("P");
-    checkBox127 = new JCheckBox("P");
-    checkBox128 = new JCheckBox("P");
-    checkBox129 = new JCheckBox("P");
-    checkBox130 = new JCheckBox("P");
-    checkBox131 = new JCheckBox("P");
-    checkBox132 = new JCheckBox("P");
-    checkBox133 = new JCheckBox("P");
-    checkBox134 = new JCheckBox("P");
-    checkBox135 = new JCheckBox("P");
-    checkBox136 = new JCheckBox("P");
-    checkBox137 = new JCheckBox("P");
-    checkBox138 = new JCheckBox("P");
-    checkBox139 = new JCheckBox("P");
-    checkBox140 = new JCheckBox("P");
-    checkBox141 = new JCheckBox("P");
-    checkBox142 = new JCheckBox("P");
-    checkBox143 = new JCheckBox("P");
-    checkBox144 = new JCheckBox("P");
-    checkBox145 = new JCheckBox("P");
-    checkBox146 = new JCheckBox("P");
-    checkBox147 = new JCheckBox("P");
-    checkBox148 = new JCheckBox("P");
-    checkBox149 = new JCheckBox("P");
-    checkBox150 = new JCheckBox("P");
-    checkBox151 = new JCheckBox("P");
-    checkBox152 = new JCheckBox("P");
-    textField1.addActionListener(handler);
-    textField2.addActionListener(handler);
-    textField3.addActionListener(handler);
-    tabbedPane.addTab("Create", null, panel3, "Panel three");
+        checkBox12 = new JCheckBox();
+        checkBox13 = new JCheckBox();
+        checkBox14 = new JCheckBox("Locks/Panic");
+        checkBox15 = new JCheckBox();
+        checkBox16 = new JCheckBox();
+        checkBox17 = new JCheckBox("Locks/Panic Hardware");
+        checkBox18 = new JCheckBox();
+        checkBox19 = new JCheckBox();
+        checkBox20 = new JCheckBox("Exit Signs Illuminated");
+        checkBox21 = new JCheckBox();
+        checkBox22 = new JCheckBox();
+        checkBox23 = new JCheckBox("Emer. Lights Working");
+        checkBox24 = new JCheckBox();
+        checkBox25 = new JCheckBox();
+        checkBox26 = new JCheckBox("Maintained/Close Fully");
+        checkBox27 = new JCheckBox();
+        checkBox28 = new JCheckBox();
+        checkBox29 = new JCheckBox("Unapproved Open Devices");
+        checkBox30 = new JCheckBox();
+        checkBox31 = new JCheckBox();
+        checkBox32 = new JCheckBox("Clear of Obstructions");
+        checkBox33 = new JCheckBox();
+        checkBox34 = new JCheckBox();
+        checkBox35 = new JCheckBox("Minimum 2A10BC");
+        checkBox36 = new JCheckBox();
+        checkBox37 = new JCheckBox();
+        checkBox38 = new JCheckBox("Max of 75 travel dist.");
+        checkBox39 = new JCheckBox();
+        checkBox40 = new JCheckBox();
+        checkBox41 = new JCheckBox("Annual Inspection");
+        checkBox42 = new JCheckBox();
+        checkBox43 = new JCheckBox();
+        checkBox44 = new JCheckBox("Access");
+        checkBox45 = new JCheckBox();
+        checkBox46 = new JCheckBox();
+        checkBox47 = new JCheckBox("Extension Cords");
+        checkBox48 = new JCheckBox();
+        checkBox49 = new JCheckBox();
+        checkBox50 = new JCheckBox("Multi Plug Adapters");
+        checkBox51 = new JCheckBox();
+        checkBox52 = new JCheckBox();
+        checkBox53 = new JCheckBox("Open Boxes, Switches");
+        checkBox54 = new JCheckBox();
+        checkBox55 = new JCheckBox();
+        checkBox56 = new JCheckBox("Opening in Electircal Panel");
+        checkBox57 = new JCheckBox();
+        checkBox58 = new JCheckBox();
+        checkBox59 = new JCheckBox("36in. clearance from storage");
+        checkBox60 = new JCheckBox();
+        checkBox61 = new JCheckBox();
+        checkBox62 = new JCheckBox("Housekeeping");
+        checkBox63 = new JCheckBox();
+        checkBox64 = new JCheckBox();
+        checkBox65 = new JCheckBox("24in. below ceiling");
+        checkBox66 = new JCheckBox();
+        checkBox67 = new JCheckBox();
+        checkBox68 = new JCheckBox("18in. below sprinklers");
+        checkBox69 = new JCheckBox();
+        checkBox70 = new JCheckBox();
+        checkBox71 = new JCheckBox("under Stairs");
+        checkBox72 = new JCheckBox();
+        checkBox73 = new JCheckBox();
+        checkBox74 = new JCheckBox("Close to ignition source");
+        checkBox75 = new JCheckBox();
+        checkBox76 = new JCheckBox();
+        checkBox77 = new JCheckBox("704 Placard");
+        checkBox78 = new JCheckBox();
+        checkBox79 = new JCheckBox();
+        checkBox80 = new JCheckBox("MSDS on premises");
+        checkBox81 = new JCheckBox();
+        checkBox82 = new JCheckBox();
+        checkBox83 = new JCheckBox("Non-smoking signs");
+        checkBox84 = new JCheckBox();
+        checkBox85 = new JCheckBox();
+        checkBox86 = new JCheckBox("Secured");
+        checkBox87 = new JCheckBox("P");
+        checkBox88 = new JCheckBox("P");
+        checkBox89 = new JCheckBox("P");
+        checkBox90 = new JCheckBox("P");
+        checkBox91 = new JCheckBox("P");
+        checkBox92 = new JCheckBox("P");
+        checkBox93 = new JCheckBox("P");
+        checkBox94 = new JCheckBox("P");
+        checkBox95 = new JCheckBox("P");
+        checkBox96 = new JCheckBox("P");
+        checkBox97 = new JCheckBox("P");
+        checkBox98 = new JCheckBox("P");
+        checkBox99 = new JCheckBox("P");
+        checkBox100 = new JCheckBox("P");
+        checkBox101 = new JCheckBox("P");
+        checkBox102 = new JCheckBox("P");
+        checkBox103 = new JCheckBox("P");
+        checkBox104 = new JCheckBox("P");
+        checkBox105 = new JCheckBox("P");
+        checkBox106 = new JCheckBox("P");
+        checkBox107 = new JCheckBox("P");
+        checkBox108 = new JCheckBox("P");
+        checkBox109 = new JCheckBox("P");
+        checkBox110 = new JCheckBox("P");
+        checkBox111 = new JCheckBox("P");
+        checkBox112 = new JCheckBox("P");
+        checkBox113 = new JCheckBox("P");
+        checkBox114 = new JCheckBox("P");
+        checkBox115 = new JCheckBox("P");
+        checkBox116 = new JCheckBox("P");
+        checkBox117 = new JCheckBox("P");
+        checkBox118 = new JCheckBox("P");
+        checkBox119 = new JCheckBox("P");
+        checkBox120 = new JCheckBox("P");
+        checkBox121 = new JCheckBox("P");
+        checkBox122 = new JCheckBox("P");
+        checkBox123 = new JCheckBox("P");
+        checkBox124 = new JCheckBox("P");
+        checkBox125 = new JCheckBox("P");
+        checkBox126 = new JCheckBox("P");
+        checkBox127 = new JCheckBox("P");
+        checkBox128 = new JCheckBox("P");
+        checkBox129 = new JCheckBox("P");
+        checkBox130 = new JCheckBox("P");
+        checkBox131 = new JCheckBox("P");
+        checkBox132 = new JCheckBox("P");
+        checkBox133 = new JCheckBox("P");
+        checkBox134 = new JCheckBox("P");
+        checkBox135 = new JCheckBox("P");
+        checkBox136 = new JCheckBox("P");
+        checkBox137 = new JCheckBox("P");
+        checkBox138 = new JCheckBox("P");
+        checkBox139 = new JCheckBox("P");
+        checkBox140 = new JCheckBox("P");
+        checkBox141 = new JCheckBox("P");
+        checkBox142 = new JCheckBox("P");
+        checkBox143 = new JCheckBox("P");
+        checkBox144 = new JCheckBox("P");
+        checkBox145 = new JCheckBox("P");
+        checkBox146 = new JCheckBox("P");
+        checkBox147 = new JCheckBox("P");
+        checkBox148 = new JCheckBox("P");
+        checkBox149 = new JCheckBox("P");
+        checkBox150 = new JCheckBox("P");
+        checkBox151 = new JCheckBox("P");
+        checkBox152 = new JCheckBox("P");
+        textField1.addActionListener(handler);
+        textField2.addActionListener(handler);
+        textField3.addActionListener(handler);
+        tabbedPane.addTab("Create", null, panel3, "Panel three");
                     
             
             
             
-        tf1 = new JTextField();    
-        JLabel label80 = new JLabel("Overdue: (Sorted by least recent)"); 
-        Alerts obj = new Alerts();
-        //obj.alerts();
+        tf1 = new JTextField(255);   
+        tf2 = new JTextField(255); 
+        tf3 = new JTextField(10); 
+        JLabel label80 = new JLabel("Overdue: (Sorted by least recent)");
+        button = new JButton("Click to see reports");
+        //ButtonHandler handler2 = new ButtonHandler();
+        //button.addActionListener(handler2);
+        //Alerts obj = new Alerts();
             
         JPanel panel4 = new JPanel();
         panel4.add(label80);    
+        panel4.add(tf1);
+        panel4.add(tf2);
+        panel4.add(tf3);
         tabbedPane.addTab("Alerts(1)", null , panel4, "Panel four");
      
         
@@ -640,15 +657,49 @@ public class BaseClass extends JFrame{
             
    }
    
+   private void queryButtonActionPerformed()
+   {
+      Alerts obj = new Alerts();
+      TypedQuery<Inspections> findOverdue = eM.createQuery(obj.SELECT_QUERY, Inspections.class);
+
+      list = findOverdue.getResultList();
+      numberOfEntries = list.size();
+      
+      if (numberOfEntries != 0)
+      {
+         currentEntryIndex = 0;
+         displayRecord();
+      } 
+   } 
+   
+   private void displayRecord() 
+   {
+      currentEntryIndex2 = currentEntryIndex;
+      Inspections currentEntry = list.get(currentEntryIndex);
+      Business currentEntry2 = list2ElectricBoogaloo.get(currentEntryIndex2);
+      tf1.setText(currentEntry2.getName());
+      tf2.setText(currentEntry2.getAddress());
+      tf3.setText(currentEntry.getInspectionDate().toString());
+   }
+   
+   
+   /*private class ButtonHandler implements ActionListener{
+       
+       BaseClass obj = new BaseClass();
+       @Override
+       public void actionPerformed(ActionEvent event)
+       {
+           obj.queryButtonActionPerformed();
+       }
+   }*/
+   
    private class TextFieldHandler implements ActionListener{
            
        @Override
        public void actionPerformed(ActionEvent event){
            String string = "";
-           
            if (event.getSource() == textField)
                string = String.format("textField: %s", event.getActionCommand());
        }
    }
-   
 }
