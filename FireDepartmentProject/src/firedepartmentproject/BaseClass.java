@@ -649,6 +649,21 @@ public class BaseClass extends JFrame{
         tabbedPane.addTab("Alerts(1)", null , panel4, "Panel four");
      
         
+             JFrame window = new JFrame("Displaying overdue reports");
+      add(boxNorth, BorderLayout.NORTH);
+      add(new JScrollPanel(resultTable), BorderLayout.CENTER);
+      
+      
+      final TableRowSorter<TableModel>sorter = new TableRowSorter<TableModel>(tableModel);
+      resultTable.setRowSorter(sorter);
+      
+      window.setdefaultCloseOperation(DISPOSE_ON_CLOSE);
+      window.setVisible(true);
+        
+        
+       
+       
+       
         
             
             add(tabbedPane);
