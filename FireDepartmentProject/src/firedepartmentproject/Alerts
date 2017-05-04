@@ -1,4 +1,9 @@
-package lsfire;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package firedepartmentproject;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -9,16 +14,18 @@ import java.sql.SQLException;
 
 public class Alerts
 {   
-    public void alerts()
-    {
-        final String DATABASE_URL = "jdbc:mysql://localhost:3306/lsfire";
-        final String SELECT_QUERY =             
+    public final String SELECT_QUERY =             
         " SELECT BU.name, IP.inspectionDate, PR.PropertyAddress " +                                             
         " FROM inspections AS IP" +                                               
         " INNER JOIN property AS PR ON IP.idProperty = PR.idProperty" + 
         " INNER JOIN business_property AS BP ON PR.idProperty = BP.idProperty" +  
         " INNER JOIN business AS BU ON BP.idBusiness = BU.idBusiness" + 
         " WHERE (DATEDIFF(NOW(), IP.inspectionDate) > 365)";
+    public void alerts()
+    {
+        //BaseClass obj2 = new BaseClass();
+        final String DATABASE_URL = "jdbc:mysql://localhost:3306/lsfire";
+        
         
         try(
             Connection connection = DriverManager.getConnection 
@@ -32,15 +39,15 @@ public class Alerts
               
               System.out.printf("The following are overdue: %n%n");
               
-              for (int i = 1; i<=numberOfColumns; i++)
-                  System.out.printf ("%-25s\t\t\t", metaData.getColumnName(i));
-              System.out.println();
+             // for (int i = 1; i<=numberOfColumns; i++)
+                 // obj2.list.add("%-25s\t\t\t", metaData.getColumnName(i));
+              //System.out.println();
               
               while (resultSet.next())
               {
-              for (int i = 1; i<=numberOfColumns; i++)
-                  System.out.printf ("%-25s\t\t\t", resultSet.getObject(i));
-              System.out.println();
+              //for (int i = 1; i<=numberOfColumns; i++)
+                  //obj2.list.add("%-25s\t\t\t", resultSet.getObject(i));
+              //System.out.println();
               }
           }
         catch(SQLException sqlException)
