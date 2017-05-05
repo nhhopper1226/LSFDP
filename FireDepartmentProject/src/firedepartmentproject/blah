@@ -1,0 +1,25 @@
+/*import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.persistence.*;
+import java.awt.BorderLayout;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.table.*;
+
+    private final EntityManagerFactory eMFactory = Persistence.createEntityManagerFactory("FireDepartmentProjectPU");
+    private final EntityManager eM = eMFactory.createEntityManager();
+    private static final String DATABASE_URL="jdoc:mysql://localhost3306/lsfire";
+    private static final String USERNAME="root";
+    private static final String PASSWORD="host";
+    private static final String DEFAULT_QUERY="SELECT * FROM Authors";
+    private static ResultSetTableModel tableModel;
+
+
+//tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, obj.SELECT_QUERY);
+        //JTable resultTable=new JTable(tableModel);
+        //add(new JScrollPane(resultTable), BorderLayout.CENTER);        
+        //add(new JScrollPane(resultTable), BorderLayout.CENTER);            
+        //final TableRowSorter<TableModel>sorter = new TableRowSorter<>(tableModel);
+        //resultTable.setRowSorter(sorter); 
+        //panel4.add(resultTable);
+*/
