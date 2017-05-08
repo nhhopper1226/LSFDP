@@ -187,6 +187,3 @@ public class Alerts
       }     
    } 
 } // end class DisplayQueryResults
-
-// Fig. 24.25: ResultSetTableModel.java
-// Generic code direct from book to manage the results from your query and integrate them into the JTable 
