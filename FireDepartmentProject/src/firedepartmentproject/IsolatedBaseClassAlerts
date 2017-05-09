@@ -1,0 +1,24 @@
+JLabel label80 = new JLabel("Overdue: ");
+button = new JButton("CLICK TO SEE WHAT IS OVERDUE");
+ 
+ButtonHandler handler2 = new ButtonHandler();
+button.addActionListener(handler2);
+               
+JPanel panel4 = new JPanel();
+try
+{        
+  tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, SELECT_QUERY);
+  JTable resultTable = new JTable(tableModel);
+  add(new JScrollPane(resultTable));        
+  add(new JScrollPane(resultTable));            
+  final TableRowSorter<TableModel>sorter = new TableRowSorter<>(tableModel);
+  resultTable.setRowSorter(sorter); 
+  resultTable.setModel(tableModel);     
+  panel4.add(resultTable);
+}
+catch(SQLException memes){}
+
+panel4.add(label80);    
+panel4.add(button);
+      
+tabbedPane.addTab("Alerts", null , panel4, "Panel four");
