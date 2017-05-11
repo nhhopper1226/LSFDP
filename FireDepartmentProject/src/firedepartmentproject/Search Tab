@@ -30,6 +30,7 @@ import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.TableRowSorter;
 import javax.swing.table.TableModel;
+import java.util.Scanner;
 
 public class DisplayQueryResults extends JFrame 
 {
@@ -40,11 +41,16 @@ public class DisplayQueryResults extends JFrame
    
    // default query retrieves all data from authors table
    private static final String DEFAULT_QUERY =  
-        "SELECT BU.name, IP.inspectionDate, PR.PropertyAddress " +  
+        "SELECT BU.name, IP.inspectionDate, PR.PropertyAddress, IP.idProperty" +  
         " FROM inspections AS IP" +                                               
         " INNER JOIN property AS PR ON IP.idProperty = PR.idProperty" + 
         " INNER JOIN business_property AS BP ON PR.idProperty = BP.idProperty" +  
         " INNER JOIN business AS BU ON BP.idBusiness = BU.idBusiness";
+    
+  /* private static final String DELETE_QUERY =
+           "DELETE FROM Inspections" +
+           "WHERE(inspectionsDate = JTable date AND"+
+           "IP.idProperty = JTable IdProp)";*/
    
    private static ResultSetTableModel tableModel;
 
@@ -66,10 +72,21 @@ public class DisplayQueryResults extends JFrame
          final JTextField filterText = new JTextField();
          JButton submitButton = new JButton("Search");
          Box boxSouth = Box.createHorizontalBox();
+         JButton printButton = new JButton("Print");
+         JButton deleteButton = new JButton("Delete");
+         JButton editButton = new JButton("Edit");
+         JLabel notice = new JLabel("Please select one of the results to either print, edit, or delete. No selecting a result and clicking the button will do nothing.     ");
+         Box newBox = Box.createHorizontalBox();
+         
+         newBox.add(notice);
+         newBox.add(printButton);
+         newBox.add(deleteButton);
+         newBox.add(editButton);
          
          boxSouth.add(filterLabel);
          boxSouth.add(filterText);
          boxSouth.add(submitButton);
+         
 
          // create JTable based on the tableModel
          JTable resultTable = new JTable(tableModel);
@@ -78,6 +95,7 @@ public class DisplayQueryResults extends JFrame
          JFrame window = new JFrame("Displaying Query Results");
          window.add(boxSouth, BorderLayout.NORTH);
          window.add(new JScrollPane(resultTable), BorderLayout.CENTER);
+         window.add(newBox, BorderLayout.SOUTH);
 
          
          final TableRowSorter<TableModel> sorter = 
@@ -113,6 +131,47 @@ public class DisplayQueryResults extends JFrame
             } 
          ); // end call to addActionLister
 
+         deleteButton.addActionListener(           
+            new ActionListener() 
+             {
+               // pass filter text to listener
+               public void actionPerformed(ActionEvent e) 
+               {
+                   Scanner input = new Scanner(System.in);
+                   int response = JOptionPane.showConfirmDialog(null, 
+                           "Are you sure you want to delete this report?",
+                           "Delete Fire Inspection Report?", 
+                           JOptionPane.YES_NO_OPTION);
+                   if ((response == 0)||(response == 0)){
+                      
+                   }
+                   else if ((response == 1)||(response == 1)){
+                       
+                   }    
+                }
+            }
+         );
+         
+         printButton.addActionListener(           
+            new ActionListener() 
+             {
+                 public void actionPerformed(ActionEvent e) 
+               {
+                   
+               }
+             }
+         );
+         
+         editButton.addActionListener(           
+            new ActionListener() 
+             {
+                 public void actionPerformed(ActionEvent e) 
+               {
+                   
+               }
+             }
+         );
+         
          // dispose of window when user quits application (this overrides
          // the default of HIDE_ON_CLOSE)
          window.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
